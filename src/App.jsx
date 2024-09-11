@@ -1,10 +1,12 @@
 import './App.css'
+import ToDoItem from './components/ToDoItem'
+import ToDoList from './components/ToDoList'
 
 function App() {
   return (
-    <>
-      <h1>React Starter Pack</h1>
-    </>
+    <div className='container'>
+      <ToDoList />
+    </div>
   )
 }
 
