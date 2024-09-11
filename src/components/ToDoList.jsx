@@ -10,16 +10,18 @@ function reducer(state, action) {
                 ...state,
                 {
                     id: crypto.randomUUID(),
-                    text: action.payload.text,
+                    text: action.payload,
                     completed: false,
                 },
             ];
         case "TOGGLE_TODO":
             return state.map((todo) =>
                 todo.id === action.payload
-                    ? { ...state, completed: !todo.completed }
+                    ? { ...todo, completed: !todo.completed }
                     : todo
             );
+        case "DELETE_TODO":
+            return state.filter((todo) => todo.id !== action.payload);
         default:
             return state;
     }
@@ -44,6 +46,12 @@ export default function ToDoList() {
         dispatch({ type: "TOGGLE_TODO", payload: id });
     }
 
+    function handleDelete(id) {
+        dispatch({ type: "DELETE_TODO", payload: id });
+    }
+
+    const completedTodos = todos.filter((todo) => todo.completed);
+
     return (
         <div>
             <h1>Todo Liste</h1>
@@ -55,17 +63,25 @@ export default function ToDoList() {
                     placeholder="Neues Todo eintragen"
                 />
                 <button>Hinzufügen</button>
-                <ul>
-                    {todos.map((todo) => (
-                        <ToDoItem
-                            key={todo.id}
-                            todo={todo}
-                            handleToggle={handleToggle}
-                        />
-                    ))}
-                </ul>
-                <p>Erledigte Todos: </p>
             </form>
+            <ul>
+                {todos.map((todo) => (
+                    <ToDoItem
+                        key={todo.id}
+                        todo={todo}
+                        handleToggle={handleToggle}
+                        handleDelete={handleDelete}
+                    />
+                ))}
+            </ul>
+            <p>Erledigte Todos: </p>
+            <ul>
+                {completedTodos.length > 0 ? (
+                    completedTodos.map((todo) => <li>{todo.text}</li>)
+                ) : (
+                    <p></p>
+                )}
+            </ul>
         </div>
     );
 }

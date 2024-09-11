@@ -1,6 +1,6 @@
 body {
     font-family: Arial, Helvetica, sans-serif;
-    background-color: #e0e0f1;
+    background-color: #c5c5d6;
     margin: 0;
     padding: 0;
     display: flex;
@@ -10,10 +10,10 @@ body {
 }
 
 .container {
-    background-color: #6a60d5;
-    padding: 50px;
+    background-color: rgb(87, 137, 230);
+    padding: 40px;
     border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(12, 12, 12, 0.1);
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
     width: 100%;
 
     h1 {
@@ -24,10 +24,63 @@ body {
 
     form {
         display: flex;
-        flex-direction: column;
-        margin-bottom: 20px;
+        justify-content: center;
+        margin: 20px;
+        
     }
 
+    input {
+        font-size: 1.3em;
+    }
 
+    button {
+        background-color: #424db6;
+        color: white;
+        border: none;
+        padding: 5px 10px;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+        background-color:  #0d3d96;
+      }
+
+      li {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 1em;
+        padding: 10px;
+        font-size: 1.2em;
+      }
+      
+
+        li.completed {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 1em;
+        
+      }
+
+      .completed label {
+        text-decoration: line-through;
+      }
+
+      li.completed label {
+        text-decoration: line-through;
+        color: #000000;
+      }
+
+      
+
+      p {
+        color: rgb(252, 252, 252);
+        margin-top: 30px;
+        font-weight: bold;
+        font-size: 1.5em;
+        text-align: center;
+      }
 }
-
